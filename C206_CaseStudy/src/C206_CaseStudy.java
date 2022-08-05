@@ -5,10 +5,12 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Menu> menuList = new ArrayList<Menu>();
+		ArrayList<OrderRequest> orList = new ArrayList<OrderRequest>();
 		menuList.add(new Menu("Mixed rice", 5));
 		menuList.add(new Menu("Bee hoon", 7));
 		
-
+		orList.add(new OrderRequest(1, "Cai Xin", 30));
+		orList.add(new OrderRequest(2, "Noodles", 45));
 		
 		int option = 0;
 
