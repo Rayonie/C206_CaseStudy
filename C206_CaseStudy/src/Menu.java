@@ -14,26 +14,16 @@
  *
  */
 public class Menu {
-	private int foodid;
 	private String foodname;
 	private int foodprice;
 	
 
-	public Menu(int foodid, String foodname, int foodprice) {
+	public Menu( String foodname, int foodprice) {
 		super();
-		this.foodid = foodid;
 		this.foodname = foodname;
 		this.foodprice = foodprice;
 	}
 
-	public int getFoodid() {
-		return foodid;
-	}
-
-
-	public void setFoodid(int foodid) {
-		this.foodid = foodid;
-	}
 
 	public String getFoodname() {
 		return foodname;

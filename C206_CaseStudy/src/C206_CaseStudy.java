@@ -5,11 +5,10 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Menu> menuList = new ArrayList<Menu>();
-		menuList.add(new Menu(1, "Mixed rice", 5));
-		menuList.add(new Menu(2, "Bee hoon", 7));
+		menuList.add(new Menu("Mixed rice", 5));
+		menuList.add(new Menu("Bee hoon", 7));
 		
-		menuList.add(new Menu(1, "Cai Xin", 30));
-		menuList.add(new Menu(2, "Noodles", 45));
+
 		
 		int option = 0;
 
@@ -20,6 +19,7 @@ public class C206_CaseStudy {
 
 			if (option == 1) {
 				// View all items
+				
 				C206_CaseStudy.viewAllMenu(menuList);
 
 			} else if (option == 2) {
@@ -44,7 +44,26 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 3) {
+				// Delete a new item
+				C206_CaseStudy.setHeader("DELETE");			
+				C206_CaseStudy.setHeader("ITEM TYPES");
+				System.out.println("1. Menu");
 				
+				int itemType = Helper.readInt("Enter option to select item type > ");
+
+				if (itemType == 1) {
+					// Add Menu
+					int id = Helper.readInt("Enter Food ID > ");
+					Menu food1 = menuList.get(id);
+					C206_CaseStudy.deleteMenu(menuList, food1);
+					System.out.println("Menu Deleted");
+
+				} else if (itemType == 2) {
+					
+
+				} else {
+					System.out.println("Invalid type");
+				}
 
 			} else if (option == 4) {
 				
@@ -60,11 +79,10 @@ public class C206_CaseStudy {
 	}
 
 	public static void menu() {
-		C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
-		System.out.println("1. Display Inventory");
+		C206_CaseStudy.setHeader("Canteen APP");
+		System.out.println("1. Display Options");
 		System.out.println("2. Add item");
-		System.out.println("3. Loan item");
-		System.out.println("4. Return item");
+		System.out.println("3. Delete item");
 		System.out.println("5. Quit");
 		Helper.line(80, "-");
 
@@ -80,25 +98,24 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < menuList.size(); i++) {
 
-			output += String.format("%-10d %-30s %-10d\n", menuList.get(i).getFoodid(),
+			output += String.format("%-10d %-30s %-10d\n", i+1,
 					menuList.get(i).getFoodname(),menuList.get(i).getFoodprice());
 		}
 		return output;
 	}
 	public static void viewAllMenu(ArrayList<Menu> menuList) {
-		C206_CaseStudy.setHeader("CAMCORDER LIST");
-		String output = String.format("%-10d %-30s %-10d\n", "FOOD ID", "FOOD NAME",
+		C206_CaseStudy.setHeader("Menu LIST");
+		String output = String.format("%-10s %-30s %-10s\n", "FOOD ID", "FOOD NAME",
 				"PRICE"	);
 		 output += retrieveAllMenu(menuList);	
 		System.out.println(output);
 	}
 
 	public static Menu inputMenu() {
-		int id = Helper.readInt("Food Id > ");
 		String name = Helper.readString("Enter Food name > ");
 		int price = Helper.readInt("Enter Price  > ");
 
-		Menu food= new Menu(id, name, price);
+		Menu food= new Menu(name, price);
 		return food;
 		
 	}
@@ -107,6 +124,12 @@ public class C206_CaseStudy {
 		menuList.add(food);
 		
 	}
+public static void deleteMenu(ArrayList<Menu> menuList, Menu food) {
+		
+		menuList.remove(food);
+		
+	}
+	
 
 	/**
 	 * @param orList
