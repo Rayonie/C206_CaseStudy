@@ -35,9 +35,9 @@ public class C206_CaseStudyTest {
 		stall3 = new Stall(3, "Western");
 		
 		
-		order1 = new OrderRequest(1, "Cai Xin", 30);
-		order2 = new OrderRequest(2, "Noodles", 45);
-		order3 = new OrderRequest(3, "Chicken", 25);
+		order1 = new OrderRequest(1, "Cai Xin", 30, null);
+		order2 = new OrderRequest(2, "Noodles", 45, null);
+		order3 = new OrderRequest(3, "Chicken", 25, null);
 		
 		stallList = new ArrayList<Stall>();
 		menuList= new ArrayList<Menu>();
