@@ -169,7 +169,7 @@ public static void deleteMenu(ArrayList<Menu> menuList, Menu food) {
 private static void viewAllOrderRequest(ArrayList<OrderRequest> orList) {
 	C206_CaseStudy.setHeader("Request Order LIST");
 	String output = String.format("%-20s %-40s %-10s\n", "STALL ID", "INGREDIENT NAME",
-			"QUANTITY"	);
+			"QUANTITY", "DATE"	);
 	 output += retrieveAllOrderRequest(orList);	
 	System.out.println(output);
 	
