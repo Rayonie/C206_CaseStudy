@@ -30,6 +30,10 @@ public class C206_CaseStudy {
 				C206_CaseStudy.setHeader("ITEM TYPES");
 				System.out.println("1. Menu");
 				
+				C206_CaseStudy.setHeader("ADD");			
+				C206_CaseStudy.setHeader("REQUEST ORDERS");
+				System.out.println("2. Request Orders");
+				
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
