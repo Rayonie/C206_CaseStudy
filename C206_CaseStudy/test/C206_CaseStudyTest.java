@@ -7,6 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
+	private Stall stall1;
+	private Stall stall2;
+	private Stall stall3;
 	private Menu food1;
 	private Menu food2;
 	private Menu food3;
@@ -14,11 +17,16 @@ public class C206_CaseStudyTest {
 	private OrderRequest order2;
 	private OrderRequest order3;
 	
+	private ArrayList<Stall> stallList;
 	private ArrayList<Menu> menuList;
 	private ArrayList<OrderRequest> orList;
 
 	@Before
 	public void setUp() throws Exception {
+		stall1 = new Stall(1, "Rice");
+		stall2 = new Stall(2, "Noodles");
+		stall3 = new Stall(3, "Western");
+		
 		food1 = new Menu(1, "Chicken Rice", 15);
 		food2 = new Menu(2, "Hokkien Mee", 7);
 		food3 = new Menu(3, "Chicken Nugget", 3);
@@ -27,11 +35,53 @@ public class C206_CaseStudyTest {
 		order2 = new OrderRequest(2, "Noodles", 45);
 		order3 = new OrderRequest(3, "Chicken", 25);
 		
+		stallList = new ArrayList<Stall>();
 		menuList= new ArrayList<Menu>();
 		orList= new ArrayList<OrderRequest>();
 	}
 	
+	@Test
+	public void testAddStall() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid StallList arraylist to add to", stallList);
+		
+		//Given an empty list, after adding 1 item, the size of the list is 1
+		C206_CaseStudy.addStall(stallList, stall1);		
+		assertEquals("Test if that StallList arraylist size is 1?", 1, stallList.size());
+		
+		//The item just added is as same as the first item of the list
+		assertSame("Test that Stall is added same as 1st item of the list?", stall1, stallList.get(0));
+		
+		//Add another item. test The size of the list is 3?
+		C206_CaseStudy.addStall(stallList, stall2);
+		C206_CaseStudy.addStall(stallList, stall3);
+		assertEquals("Test that Stall arraylist size is 3?", 3, stallList.size());
+		assertSame("Test that Stall is added same as 3rd item of the list?", stall3, stallList.get(2));
+	}
+	@Test
+	public void testRetrieveAllStall() {
+		// Test if Item list is not null but empty, so that can add a new ite)
+		assertNotNull("Test if there is valid StallList arraylist to add to", stallList);
+		
+		//test if the list of Menu retrieved from the CaseStudy is empty
+		String allStall= C206_CaseStudy.retrieveAllStall(stallList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllStallList", testOutput, allStall);
+				
+		//Given an empty list, after adding 2 items, test if the size of the list is 2
+		C206_CaseStudy.addStall(stallList, stall1);
+		C206_CaseStudy.addStall(stallList, stall2);
+		assertEquals("Test if that Stall arraylist size is 2?", 2, stallList.size());
+		
+		//test if the expected output string same as the list of camcorder retrieved from the SourceCentre
+		allStall= C206_CaseStudy.retrieveAllStall(stallList);
+
+		testOutput = String.format("%-10d %-30\n",1, "Rice");
+		testOutput += String.format("%-10d %-30s\n",2, "Noodles");
 	
+		assertEquals("Check that ViewAllStallList", testOutput, allStall);
+		
+	}
 	@Test
 	public void testAddMenu() {
 		// Item list is not null, so that can add a new item
