@@ -8,6 +8,9 @@ public class C206_CaseStudy {
 		menuList.add(new Menu(1, "Mixed rice", 5));
 		menuList.add(new Menu(2, "Bee hoon", 7));
 		
+		menuList.add(new Menu(1, "Cai Xin", 30));
+		menuList.add(new Menu(2, "Noodles", 45));
+		
 		int option = 0;
 
 		while (option != 5) {
@@ -103,6 +106,24 @@ public class C206_CaseStudy {
 		
 		menuList.add(food);
 		
+	}
+
+	/**
+	 * @param orList
+	 * @param order1
+	 */
+	public static void addOrderRequest(ArrayList<OrderRequest> orList, OrderRequest order1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * @param orList
+	 * @return
+	 */
+	public static String retrieveAllOrderRequest(ArrayList<OrderRequest> orList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 
