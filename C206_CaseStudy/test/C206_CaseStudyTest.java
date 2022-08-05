@@ -13,6 +13,7 @@ public class C206_CaseStudyTest {
 	private Menu food1;
 	private Menu food2;
 	private Menu food3;
+	private Menu food4;
 	private OrderRequest order1;
 	private OrderRequest order2;
 	private OrderRequest order3;
@@ -27,6 +28,7 @@ public class C206_CaseStudyTest {
 		food1 = new Menu("Chicken Rice", 15);
 		food2 = new Menu("Hokkien Mee", 7);
 		food3 = new Menu("Chicken Nugget", 3);
+		food4 = new Menu("Fried Chicken", 16);
 
 		stall1 = new Stall(1, "Rice");
 		stall2 = new Stall(2, "Noodles");
@@ -101,6 +103,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addMenu(menuList, food3);
 		assertEquals("Test that Menu arraylist size is 3?", 3, menuList.size());
 		assertSame("Test that Menu is added same as 3rd item of the list?", food3, menuList.get(2));
+		
 	}
 	@Test
 	public void testRetrieveAllMenu() {
@@ -124,6 +127,7 @@ public class C206_CaseStudyTest {
 		testOutput += String.format("%-10d %-30s %-10d\n",2, "Hokkien Mee", 7);
 	
 		assertEquals("Check that ViewAllMenulist", testOutput, allMenu);
+		
 		
 	}
 	@Test

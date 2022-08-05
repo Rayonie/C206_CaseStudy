@@ -67,10 +67,9 @@ public class C206_CaseStudy {
 					System.out.println("Invalid type");
 				}
 
-			} else if (option == 4) {
 				
 
-			} else if (option == 5) {
+			} else if (option == 4) {
 				System.out.println("Bye!");
 			} else {
 				System.out.println("Invalid option");
@@ -85,7 +84,7 @@ public class C206_CaseStudy {
 		System.out.println("1. Display Options");
 		System.out.println("2. Add item");
 		System.out.println("3. Delete item");
-		System.out.println("5. Quit");
+		System.out.println("4. Quit");
 		Helper.line(80, "-");
 
 	}
@@ -122,7 +121,7 @@ public class C206_CaseStudy {
 		
 	}
 	public static void addMenu(ArrayList<Menu> menuList, Menu food) {
-		if(food.getFoodprice() <= 15 || food.getFoodprice() >= 3) {
+		if(food.getFoodprice() <= 15 && food.getFoodprice() >= 3) {
 			menuList.add(food);
 		}else {
 			System.out.println("Price must be below 15 and above 3");
