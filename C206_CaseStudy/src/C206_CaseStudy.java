@@ -23,15 +23,13 @@ public class C206_CaseStudy {
 				// View all items
 				
 				C206_CaseStudy.viewAllMenu(menuList);
+				C206_CaseStudy.viewAllOrderRequest(orList);
 
 			} else if (option == 2) {
 				// Add a new item
 				C206_CaseStudy.setHeader("ADD");			
 				C206_CaseStudy.setHeader("ITEM TYPES");
 				System.out.println("1. Menu");
-				
-				C206_CaseStudy.setHeader("ADD");			
-				C206_CaseStudy.setHeader("REQUEST ORDERS");
 				System.out.println("2. Request Orders");
 				
 				int itemType = Helper.readInt("Enter option to select item type > ");
@@ -83,6 +81,10 @@ public class C206_CaseStudy {
 		}
 
 	}
+
+	/**
+	 * @param orList
+	 */
 
 	public static void menu() {
 		C206_CaseStudy.setHeader("Canteen APP");
@@ -148,21 +150,30 @@ public static void deleteMenu(ArrayList<Menu> menuList, Menu food) {
 	 * @param orList
 	 * @param order1
 	 */
-	public static void addOrderRequest(ArrayList<OrderRequest> orList, OrderRequest order1) {
-		// TODO Auto-generated method stub.
-		
+	public static void addOrderRequest(ArrayList<OrderRequest> orList, OrderRequest order) {
+
 	}
 
 	/**
 	 * @param orList
 	 * @return
 	 */
-	public static String retrieveAllOrderRequest(ArrayList<OrderRequest> orList) {
-		// TODO Auto-generated method stub
-		return null;
+	public static String retrieveAllOrderRequest(ArrayList<OrderRequest> orList) {		String output = "";
+
+	for (int i = 0; i < orList.size(); i++) {
+
+		output += String.format("%-20d %-40s %-10d\n", i+1,
+				orList.get(i).getingredientname(),orList.get(i).getquantity());
 	}
-	
+	return output;}
 
+private static void viewAllOrderRequest(ArrayList<OrderRequest> orList) {
+	C206_CaseStudy.setHeader("Request Order LIST");
+	String output = String.format("%-20s %-40s %-10s\n", "STALL ID", "INGREDIENT NAME",
+			"QUANTITY"	);
+	 output += retrieveAllOrderRequest(orList);	
+	System.out.println(output);
 	
-
+	
+}
 }
