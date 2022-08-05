@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
+	private static final Menu OrderRequest = null;
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Menu> menuList = new ArrayList<Menu>();
@@ -41,7 +43,7 @@ public class C206_CaseStudy {
 					System.out.println("Menu added");
 
 				} else if (itemType == 2) {
-					
+
 
 				} else {
 					System.out.println("Invalid type");
@@ -53,7 +55,7 @@ public class C206_CaseStudy {
 				C206_CaseStudy.setHeader("ITEM TYPES");
 				System.out.println("1. Menu");
 				System.out.println("2. Order Request");
-				
+
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
@@ -70,7 +72,7 @@ public class C206_CaseStudy {
 					System.out.println("Invalid type");
 				}
 
-				
+
 
 			} else if (option == 4) {
 				System.out.println("Bye!");
@@ -100,7 +102,7 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
-	
+
 	public static String retrieveAllMenu(ArrayList<Menu> menuList) {
 		String output = "";
 
@@ -154,7 +156,7 @@ public static void deleteMenu(ArrayList<Menu> menuList, Menu food) {
 		String name = Helper.readString("Enter name of ingredient  > ");
 		String date = Helper.readString("Enter date > ");
 
-		OrderRequest food= new OrderRequest(id, name, date);
+		OrderRequest food= new OrderRequest(id, name, id, date);
 		return OrderRequest;
 		
 	}
@@ -175,7 +177,6 @@ public static void deleteMenu(ArrayList<Menu> menuList, Menu food) {
 			"QUANTITY", "DATE"	);
 	 output += retrieveAllOrderRequest(orList);	
 	System.out.println(output);
-	
 	
 }
 }

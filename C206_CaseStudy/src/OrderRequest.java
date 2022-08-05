@@ -26,7 +26,7 @@ public class OrderRequest {
 	private String ingredientname;
 	private int quantity;
 	private String date;
-	
+
 	public OrderRequest(int requestid, String ingredientname, int quantity, String date) {
 		super();
 		this.requestid = requestid;
@@ -58,7 +58,7 @@ public class OrderRequest {
 	public void setquantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
+
 	public String getdate() {
 		return date;
 	}
