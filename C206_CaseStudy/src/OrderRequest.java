@@ -39,7 +39,6 @@ public class OrderRequest {
 		return requestid;
 	}
 
-
 	public void setrequestid(int requestid) {
 		this.requestid = requestid;
 	}
@@ -68,8 +67,5 @@ public class OrderRequest {
 	public void setdate(String date) {
 		this.date = date;
 	}
-
 	
-	
-
 }
