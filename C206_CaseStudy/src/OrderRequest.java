@@ -25,14 +25,14 @@ public class OrderRequest {
 	private int requestid;
 	private String ingredientname;
 	private int quantity;
+	private String date;
 	
-	
-
-	public OrderRequest(int requestid, String ingredientname, int quantity) {
+	public OrderRequest(int requestid, String ingredientname, int quantity, String date) {
 		super();
 		this.requestid = requestid;
 		this.ingredientname = ingredientname;
 		this.quantity = quantity;
+		this.date = date;
 	}
 
 	public int getrequestid() {
@@ -59,6 +59,16 @@ public class OrderRequest {
 	public void setquantity(int quantity) {
 		this.quantity = quantity;
 	}
+	
+	public String getdate() {
+		return date;
+	}
+
+
+	public void setdate(String date) {
+		this.date = date;
+	}
+
 	
 	
 

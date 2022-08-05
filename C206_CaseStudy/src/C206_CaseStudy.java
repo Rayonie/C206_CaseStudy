@@ -52,6 +52,7 @@ public class C206_CaseStudy {
 				C206_CaseStudy.setHeader("DELETE");			
 				C206_CaseStudy.setHeader("ITEM TYPES");
 				System.out.println("1. Menu");
+				System.out.println("2. Order Request");
 				
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
@@ -144,19 +145,20 @@ public static void deleteMenu(ArrayList<Menu> menuList, Menu food) {
 		
 	}
 	
-
-	/**
-	 * @param orList
-	 * @param order1
-	 */
 	public static void addOrderRequest(ArrayList<OrderRequest> orList, OrderRequest order) {
 
 	}
 
-	/**
-	 * @param orList
-	 * @return
-	 */
+	public static Menu inputOrderRequest() {
+		int id = Helper.readInt("Enter stall ID > ");
+		String name = Helper.readString("Enter name of ingredient  > ");
+		String date = Helper.readString("Enter date > ");
+
+		OrderRequest food= new OrderRequest(id, name, date);
+		return OrderRequest;
+		
+	}
+	
 	public static String retrieveAllOrderRequest(ArrayList<OrderRequest> orList) {		String output = "";
 
 	for (int i = 0; i < orList.size(); i++) {
@@ -164,9 +166,10 @@ public static void deleteMenu(ArrayList<Menu> menuList, Menu food) {
 		output += String.format("%-20d %-40s %-10d\n", i+1,
 				orList.get(i).getingredientname(),orList.get(i).getquantity());
 	}
+	
 	return output;}
 
-private static void viewAllOrderRequest(ArrayList<OrderRequest> orList) {
+	private static void viewAllOrderRequest(ArrayList<OrderRequest> orList) {
 	C206_CaseStudy.setHeader("Request Order LIST");
 	String output = String.format("%-20s %-40s %-10s\n", "STALL ID", "INGREDIENT NAME",
 			"QUANTITY", "DATE"	);
