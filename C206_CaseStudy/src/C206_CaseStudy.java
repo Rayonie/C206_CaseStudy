@@ -122,13 +122,20 @@ public class C206_CaseStudy {
 		
 	}
 	public static void addMenu(ArrayList<Menu> menuList, Menu food) {
+		if(food.getFoodprice() <= 15 || food.getFoodprice() >= 3) {
+			menuList.add(food);
+		}else {
+			System.out.println("Price must be below 15 and above 3");
+		}
 		
-		menuList.add(food);
 		
 	}
 public static void deleteMenu(ArrayList<Menu> menuList, Menu food) {
-		
+		if(menuList.isEmpty()) {
+			System.out.println("There is nothing to delete");
+		}else {
 		menuList.remove(food);
+		}
 		
 	}
 	
