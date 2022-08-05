@@ -113,7 +113,7 @@ public class C206_CaseStudy {
 	 * @param order1
 	 */
 	public static void addOrderRequest(ArrayList<OrderRequest> orList, OrderRequest order1) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub.
 		
 	}
 
