@@ -32,9 +32,6 @@ public class C206_CaseStudyTest {
 		stall2 = new Stall(2, "Noodles");
 		stall3 = new Stall(3, "Western");
 		
-		food1 = new Menu(1, "Chicken Rice", 15);
-		food2 = new Menu(2, "Hokkien Mee", 7);
-		food3 = new Menu(3, "Chicken Nugget", 3);
 		
 		order1 = new OrderRequest(1, "Cai Xin", 30);
 		order2 = new OrderRequest(2, "Noodles", 45);
