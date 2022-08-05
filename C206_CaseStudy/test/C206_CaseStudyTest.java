@@ -23,11 +23,11 @@ public class C206_CaseStudyTest {
 
 	@Before
 	public void setUp() throws Exception {
-<<<<<<< HEAD
+
 		food1 = new Menu("Chicken Rice", 15);
 		food2 = new Menu("Hokkien Mee", 7);
 		food3 = new Menu("Chicken Nugget", 3);
-=======
+
 		stall1 = new Stall(1, "Rice");
 		stall2 = new Stall(2, "Noodles");
 		stall3 = new Stall(3, "Western");
@@ -35,7 +35,6 @@ public class C206_CaseStudyTest {
 		food1 = new Menu(1, "Chicken Rice", 15);
 		food2 = new Menu(2, "Hokkien Mee", 7);
 		food3 = new Menu(3, "Chicken Nugget", 3);
->>>>>>> branch 'master' of https://github.com/Rayonie/C206_CaseStudy.git
 		
 		order1 = new OrderRequest(1, "Cai Xin", 30);
 		order2 = new OrderRequest(2, "Noodles", 45);
