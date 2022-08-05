@@ -54,7 +54,7 @@ public class C206_CaseStudy {
 				if (itemType == 1) {
 					// Add Menu
 					int id = Helper.readInt("Enter Food ID > ");
-					Menu food1 = menuList.get(id);
+					Menu food1 = menuList.get(id-1);
 					C206_CaseStudy.deleteMenu(menuList, food1);
 					System.out.println("Menu Deleted");
 
