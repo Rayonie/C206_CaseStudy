@@ -25,7 +25,7 @@ public class C206_CaseStudy {
 				C206_CaseStudy.viewAllMenu(menuList);
 
 			} else if (option == 2) {
-				// Add a new item.
+				// Add a new item
 				C206_CaseStudy.setHeader("ADD");			
 				C206_CaseStudy.setHeader("ITEM TYPES");
 				System.out.println("1. Menu");
