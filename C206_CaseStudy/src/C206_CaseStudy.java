@@ -1,12 +1,12 @@
-import java.util.ArrayList;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class C206_CaseStudy {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub.
 		ArrayList<Stall> stallList = new ArrayList<Stall>();
 		ArrayList<Menu> menuList = new ArrayList<Menu>();
 		ArrayList<OrderRequest> orList = new ArrayList<OrderRequest>();
@@ -40,9 +40,9 @@ public class C206_CaseStudy {
 				// Add a new item
 				C206_CaseStudy.setHeader("ADD");
 				C206_CaseStudy.setHeader("ITEM TYPES");
-				System.out.println("1. Stall");
-				System.out.println("2. Menu");
-				System.out.println("3. Request Orders");
+				System.out.println("1. Menu");
+				System.out.println("2. Request Orders");
+				System.out.println("3. Stall");
 
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
@@ -53,6 +53,12 @@ public class C206_CaseStudy {
 					System.out.println("Menu added");
 
 				} else if (itemType == 2) {
+
+					// Add Order Request
+					OrderRequest order1 = inputOrderRequest();
+					C206_CaseStudy.addOrderRequest(orList, order1);
+
+				} else if (itemType == 3) {
 					// Add Stall
 					Stall stall1 = inputStall();
 					C206_CaseStudy.addStall(stallList, stall1);
@@ -123,22 +129,6 @@ public class C206_CaseStudy {
 		return stall;
 	}
 
-	/**
-	 * @param stallList
-	 */
-	private static void viewAllStall(ArrayList<Stall> stallList) {
-		// TODO Auto-generated method stub
-		C206_CaseStudy.setHeader("Stall LIST");
-		String output = String.format("%-10s %-30s\n", "STALL ID", "STALL NAME");
-		output += retrieveAllStall(stallList);
-		System.out.println(output);
-
-	}
-
-	/**
-	 * @param orList
-	 */
-
 	public static void menu() {
 		C206_CaseStudy.setHeader("Canteen APP");
 		System.out.println("1. Display Options");
@@ -205,26 +195,28 @@ public class C206_CaseStudy {
 		for (int i = 0; i < orList.size(); i++) {
 			if (orList.get(i).getStallid() == order.getStallid()
 					&& orList.get(i).getrequestid() != order.getrequestid()) {
+
+			if(orList.get(i).getStallid() == order.getStallid()) {
 				repeat = repeat + 1;
-			}
+			}			
 		}
-		if (repeat >= 2) {
+		if(repeat >= 2) {
 			System.out.println("There is already more than 2 request order from the same store");
-		} else {
+		}else{
 			orList.add(order);
 			System.out.println("Order Request added");
 		}
-	}
+	}}
 
 	public static OrderRequest inputOrderRequest() {
 		int requestid = Helper.readInt("Enter request ID > ");
 		int id = Helper.readInt("Enter stall ID > ");
 		String name = Helper.readString("Enter name of ingredient  > ");
 		int quantity = Helper.readInt("Enter quantity > ");
+
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
 		Calendar obj = Calendar.getInstance();
 		String str = formatter.format(obj.getTime());
-
 		OrderRequest order = new OrderRequest(requestid, id, name, quantity, str);
 		return order;
 
@@ -232,12 +224,15 @@ public class C206_CaseStudy {
 
 	public static String retrieveAllOrderRequest(ArrayList<OrderRequest> orList) {
 		String output = "";
-
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+		Calendar obj = Calendar.getInstance();
+		String str = formatter.format(obj.getTime());
 		for (int i = 0; i < orList.size(); i++) {
-
 			output += String.format("%-15d %-15d %-25s %-20d %-10s\n", orList.get(i).getrequestid(),
 					orList.get(i).getStallid(), orList.get(i).getingredientname(), orList.get(i).getquantity(),
 					orList.get(i).getdate());
+			output += String.format("%-20d %-40s %-10d\n", orList.get(i).getStallid(),
+					orList.get(i).getingredientname(), orList.get(i).getquantity(), str);
 		}
 
 		return output;
@@ -263,10 +258,10 @@ public class C206_CaseStudy {
 	}
 
 	public static void addStall(ArrayList<Stall> stallList, Stall stall) {
-		// TODO Auto-generated method stub
-		if (stall.getStallId() < 10) {
+		// TODO Auto-generated method stub.
+		if(stall.getStallId() < 10) {
 			stallList.add(stall);
-		} else {
+		}else {
 			System.out.println("Maximum stalls in canteen is 10");
 		}
 	}
@@ -277,10 +272,19 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < stallList.size(); i++) {
 
-			output += String.format("%-10d %-30s\n", i + 1, stallList.get(i).getStallId(),
+			output += String.format("%-10s %-30s\n", stallList.get(i).getStallId(),
 					stallList.get(i).getStallName());
 		}
 		return output;
+	}
+	
+	private static void viewAllStall(ArrayList<Stall> stallList) {
+		// TODO Auto-generated method stub
+		C206_CaseStudy.setHeader("Stall LIST");
+		String output = String.format("%-10s %-30s\n", "STALL ID", "STALL NAME");
+		output += retrieveAllStall(stallList);
+		System.out.println(output);
+		
 	}
 
 	public static void deleteStall(ArrayList<Stall> stallList, Stall stall) {
