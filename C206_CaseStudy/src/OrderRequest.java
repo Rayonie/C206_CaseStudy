@@ -1,10 +1,3 @@
-import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /*
  * I declare that this code was written by me.
@@ -23,7 +16,6 @@ import org.junit.Test;
  */
 public class OrderRequest {
 	private int stallid;
-	private int requestid;
 	private String ingredientname;
 	private int quantity;
 	private String date;

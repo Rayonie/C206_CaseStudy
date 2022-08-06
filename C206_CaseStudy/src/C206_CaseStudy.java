@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class C206_CaseStudy {
 
@@ -10,10 +11,12 @@ public class C206_CaseStudy {
 		ArrayList<OrderRequest> orList = new ArrayList<OrderRequest>();
 		menuList.add(new Menu("Mixed rice", 5));
 		menuList.add(new Menu("Bee hoon", 7));
-		
-		Date date = new Date();
-		orList.add(new OrderRequest(1, "Cai Xin", 30, "date.getDate()"));
-		orList.add(new OrderRequest(2, "Noodles", 45, "dd-mm-yy"));
+
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+		Calendar obj = Calendar.getInstance();
+		String str = formatter.format(obj.getTime());
+		orList.add(new OrderRequest(1, "Cai Xin", 30, str));
+		orList.add(new OrderRequest(2, "Noodles", 45, str));
 
 		int option = 0;
 
@@ -47,7 +50,6 @@ public class C206_CaseStudy {
 					// Add Order Request
 					OrderRequest order1 = inputOrderRequest();
 					C206_CaseStudy.addOrderRequest(orList, order1);
-					System.out.println("Order Request added");
 
 				} else {
 					System.out.println("Invalid type");
@@ -156,10 +158,17 @@ public class C206_CaseStudy {
 	}
 
 	public static void addOrderRequest(ArrayList<OrderRequest> orList, OrderRequest order) {
-		if (order.getStallid() <= 2) {
-			orList.add(order);
+		int repeat = 0;
+		for (int i = 0; i < orList.size(); i++) {
+			if (orList.get(i).getStallid() == order.getStallid()) {
+				repeat = repeat + 1;
+			}
+		}
+		if (repeat >= 2) {
+			System.out.println("There is already more than 2 request order from the same store");
 		} else {
-			System.out.println("Unable to add. You have reach maximum amount of 2 orders per week.");
+			orList.add(order);
+			System.out.println("Order Request added");
 		}
 	}
 
@@ -167,9 +176,11 @@ public class C206_CaseStudy {
 		int id = Helper.readInt("Enter stall ID > ");
 		String name = Helper.readString("Enter name of ingredient  > ");
 		int quantity = Helper.readInt("Enter quantity > ");
-		String date = Helper.readString("Enter date > ");
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+		Calendar obj = Calendar.getInstance();
+		String str = formatter.format(obj.getTime());
 
-		OrderRequest order = new OrderRequest(id, name, quantity, date);
+		OrderRequest order = new OrderRequest(id, name, quantity, str);
 		return order;
 
 	}
@@ -179,7 +190,7 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < orList.size(); i++) {
 
-			output += String.format("%-15d %-20s %-20d %-10s\n", orList.get(i).getStallid(),
+			output += String.format("%-15d %-25s %-20d %-10s\n", orList.get(i).getStallid(),
 					orList.get(i).getingredientname(), orList.get(i).getquantity(), orList.get(i).getdate());
 		}
 
@@ -188,7 +199,7 @@ public class C206_CaseStudy {
 
 	private static void viewAllOrderRequest(ArrayList<OrderRequest> orList) {
 		C206_CaseStudy.setHeader("Request Order LIST");
-		String output = String.format("%-15s %-20s %-20s %-10s\n", "STALL ID", "INGREDIENT NAME", "QUANTITY", "DATE");
+		String output = String.format("%-15s %-25s %-20s %-10s\n", "STALL ID", "INGREDIENT NAME", "QUANTITY", "DATE");
 		output += retrieveAllOrderRequest(orList);
 		System.out.println(output);
 
@@ -209,9 +220,9 @@ public class C206_CaseStudy {
 	 */
 	public static void addStall(ArrayList<Stall> stallList, Stall stall) {
 		// TODO Auto-generated method stub
-		if(stall.getStallId() < 10) {
+		if (stall.getStallId() < 10) {
 			stallList.add(stall);
-		}else {
+		} else {
 			System.out.println("Maximum stalls in canteen is 10");
 		}
 	}
