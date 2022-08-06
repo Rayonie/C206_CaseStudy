@@ -36,14 +36,6 @@ public class OrderRequest {
 		this.stallid = stallid;
 	}
 
-	public int getrequestid() {
-		return requestid;
-	}
-
-	public void setrequestid(int requestid) {
-		this.requestid = requestid;
-	}
-
 	public String getingredientname() {
 		return ingredientname;
 	}
