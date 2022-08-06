@@ -22,17 +22,25 @@ import org.junit.Test;
  *
  */
 public class OrderRequest {
+	private int stallid;
 	private int requestid;
 	private String ingredientname;
 	private int quantity;
 	private String date;
 
-	public OrderRequest(int requestid, String ingredientname, int quantity, String date) {
+	public OrderRequest(String ingredientname, int quantity, String date) {
 		super();
-		this.requestid = requestid;
 		this.ingredientname = ingredientname;
 		this.quantity = quantity;
 		this.date = date;
+	}
+	
+	public int getStallid() {
+		return stallid;
+	}
+
+	public void setStallid(int stallid) {
+		this.stallid = stallid;
 	}
 
 	public int getrequestid() {
@@ -62,6 +70,5 @@ public class OrderRequest {
 	public String getdate() {
 		return date;
 	}
-
 
 }
