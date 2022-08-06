@@ -13,7 +13,6 @@ public class C206_CaseStudyTest {
 	private Menu food1;
 	private Menu food2;
 	private Menu food3;
-	private Menu food4;
 	private OrderRequest order1;
 	private OrderRequest order2;
 	private OrderRequest order3;
@@ -28,7 +27,6 @@ public class C206_CaseStudyTest {
 		food1 = new Menu("Chicken Rice", 15);
 		food2 = new Menu("Hokkien Mee", 7);
 		food3 = new Menu("Chicken Nugget", 3);
-		food4 = new Menu("Fried Chicken", 16);
 
 		stall1 = new Stall(1, "Rice");
 		stall2 = new Stall(2, "Noodles");

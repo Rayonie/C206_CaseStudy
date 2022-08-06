@@ -23,13 +23,13 @@ import org.junit.Test;
  */
 public class OrderRequest {
 	private int stallid;
-	private int requestid;
 	private String ingredientname;
 	private int quantity;
 	private String date;
 
-	public OrderRequest(int requestid, String ingredientname, int quantity, String date) {
+	public OrderRequest(int stallid, String ingredientname, int quantity, String date) {
 		super();
+		this.stallid = stallid;
 		this.ingredientname = ingredientname;
 		this.quantity = quantity;
 		this.date = date;

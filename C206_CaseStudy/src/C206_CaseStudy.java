@@ -14,7 +14,7 @@ public class C206_CaseStudy {
 		menuList.add(new Menu("Bee hoon", 7));
 
 		orList.add(new OrderRequest(1, "Cai Xin", 30, null));
-		orList.add(new OrderRequest(2, "Noodles", 45, null));
+		orList.add(new OrderRequest(2, "Vege", 25, null));
 
 		int option = 0;
 
@@ -196,10 +196,16 @@ public class C206_CaseStudy {
 	}
 
 	public static void addOrderRequest(ArrayList<OrderRequest> orList, OrderRequest order) {
-		if (order.getStallid() <= 2) {
+		int repeat = 0;
+		for (int i = 0; i < orList.size(); i++) {
+			if(orList.get(i).getStallid() == order.getStallid()) {
+				repeat = repeat + 1;
+			}			
+		}
+		if(repeat >= 2) {
+			System.out.println("There is already more than 2 request order from the same store");
+		}else{
 			orList.add(order);
-		} else {
-			System.out.println("Unable to add. You have reach maximum amount of 2 orders per week.");
 		}
 	}
 
