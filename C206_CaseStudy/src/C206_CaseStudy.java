@@ -7,8 +7,12 @@ public class C206_CaseStudy {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		ArrayList<Stall> stallList = new ArrayList<Stall>();
 		ArrayList<Menu> menuList = new ArrayList<Menu>();
 		ArrayList<OrderRequest> orList = new ArrayList<OrderRequest>();
+		stallList.add(new Stall(1, "Rice"));
+		stallList.add(new Stall(2, "Noodles"));
+		
 		menuList.add(new Menu("Mixed rice", 5));
 		menuList.add(new Menu("Bee hoon", 7));
 
@@ -27,7 +31,8 @@ public class C206_CaseStudy {
 
 			if (option == 1) {
 				// View all items
-
+				
+                C206_CaseStudy.viewAllStall(stallList);                
 				C206_CaseStudy.viewAllMenu(menuList);
 				C206_CaseStudy.viewAllOrderRequest(orList);
 
@@ -35,8 +40,9 @@ public class C206_CaseStudy {
 				// Add a new item
 				C206_CaseStudy.setHeader("ADD");
 				C206_CaseStudy.setHeader("ITEM TYPES");
-				System.out.println("1. Menu");
-				System.out.println("2. Request Orders");
+				System.out.println("1. Stall");
+				System.out.println("2. Menu");
+				System.out.println("3. Request Orders");
 
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
@@ -51,7 +57,13 @@ public class C206_CaseStudy {
 					OrderRequest order1 = inputOrderRequest();
 					C206_CaseStudy.addOrderRequest(orList, order1);
 
-				} else {
+				} else if (itemType == 3) {
+					// Add Stall
+					Stall stall1 = inputStall();
+					C206_CaseStudy.addStall(stallList, stall1);
+					System.out.println("Stall added");
+
+				}else {
 					System.out.println("Invalid type");
 				}
 
@@ -61,6 +73,7 @@ public class C206_CaseStudy {
 				C206_CaseStudy.setHeader("ITEM TYPES");
 				System.out.println("1. Menu");
 				System.out.println("2. Order Request");
+				System.out.println("3. Stall");
 
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
@@ -78,7 +91,14 @@ public class C206_CaseStudy {
 					C206_CaseStudy.deleteOrderRequest(orList, order1);
 					System.out.println("Order Request Deleted");
 
-				} else {
+				} else if (itemType == 3) {
+					// Delete Stall
+					int id = Helper.readInt("Enter Stall ID > ");
+					Stall stall1 = stallList.get(id - 1);					
+					C206_CaseStudy.deleteStall(stallList, stall1);
+					System.out.println("Stall Deleted");
+
+				}else {
 					System.out.println("Invalid type");
 				}
 
@@ -90,6 +110,29 @@ public class C206_CaseStudy {
 
 		}
 
+	}
+
+	/**
+	 * @return
+	 */
+	private static Stall inputStall() {
+		// TODO Auto-generated method stub
+		int stallId = Helper.readInt("Enter Stall ID > ");
+		String stallName = Helper.readString("Enter Stall name > ");
+		Stall stall = new Stall(stallId, stallName);
+		return stall;
+	}
+
+	/**
+	 * @param stallList
+	 */
+	private static void viewAllStall(ArrayList<Stall> stallList) {
+		// TODO Auto-generated method stub
+		C206_CaseStudy.setHeader("Stall LIST");
+		String output = String.format("%-10s %-30s\n", "STALL ID", "STALL NAME");
+		output += retrieveAllStall(stallList);
+		System.out.println(output);
+		
 	}
 
 	/**
@@ -214,10 +257,7 @@ public class C206_CaseStudy {
 
 	}
 
-	/**
-	 * @param stallList
-	 * @param stall1
-	 */
+
 	public static void addStall(ArrayList<Stall> stallList, Stall stall) {
 		// TODO Auto-generated method stub
 		if (stall.getStallId() < 10) {
@@ -226,4 +266,27 @@ public class C206_CaseStudy {
 			System.out.println("Maximum stalls in canteen is 10");
 		}
 	}
-}
+
+
+	public static String retrieveAllStall(ArrayList<Stall> stallList) {
+		// TODO Auto-generated method stub
+		String output = "";
+
+		for (int i = 0; i < stallList.size(); i++) {
+
+			output += String.format("%-10d %-30s\n", i + 1, stallList.get(i).getStallId(),
+					stallList.get(i).getStallName());
+		}
+		return output;
+	}
+
+
+	public static void deleteStall(ArrayList<Stall> stallList, Stall stall) {
+		// TODO Auto-generated method stub
+		if (stallList.isEmpty()) {
+			System.out.println("There is nothing to delete");
+		} else {
+			stallList.remove(stall);
+		}
+	}}
+	
