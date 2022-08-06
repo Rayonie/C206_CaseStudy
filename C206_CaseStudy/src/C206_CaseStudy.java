@@ -9,8 +9,8 @@ public class C206_CaseStudy {
 		menuList.add(new Menu("Mixed rice", 5));
 		menuList.add(new Menu("Bee hoon", 7));
 
-		orList.add(new OrderRequest("Cai Xin", 30, null));
-		orList.add(new OrderRequest("Noodles", 45, null));
+		orList.add(new OrderRequest(1, "Cai Xin", 30, null));
+		orList.add(new OrderRequest(2, "Noodles", 45, null));
 
 		int option = 0;
 

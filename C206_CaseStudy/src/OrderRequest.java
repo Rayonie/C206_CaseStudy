@@ -28,7 +28,7 @@ public class OrderRequest {
 	private int quantity;
 	private String date;
 
-	public OrderRequest(String ingredientname, int quantity, String date) {
+	public OrderRequest(int requestid, String ingredientname, int quantity, String date) {
 		super();
 		this.ingredientname = ingredientname;
 		this.quantity = quantity;
