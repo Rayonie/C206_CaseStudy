@@ -20,6 +20,7 @@ public class C206_CaseStudyTest {
 	private ArrayList<Stall> stallList;
 	private ArrayList<Menu> menuList;
 	private ArrayList<OrderRequest> orList;
+	private ArrayList<Menu> menuList;
 
 	@Before
 	public void setUp() throws Exception {
@@ -33,9 +34,9 @@ public class C206_CaseStudyTest {
 		stall3 = new Stall(3, "Western");
 		
 		
-		order1 = new OrderRequest(1, "Cai Xin", 30, null);
-		order2 = new OrderRequest(2, "Noodles", 45, null);
-		order3 = new OrderRequest(3, "Chicken", 25, null);
+		order1 = new OrderRequest(1, 1, "Cai Xin", 30, null);
+		order2 = new OrderRequest(2, 2, "Noodles", 45, null);
+		order3 = new OrderRequest(3, 3, "Chicken", 25, null);
 		
 		stallList = new ArrayList<Stall>();
 		menuList= new ArrayList<Menu>();
@@ -162,16 +163,16 @@ public class C206_CaseStudyTest {
 		
 		//Given an empty list, after adding 1 item, the size of the list is 1.
 		C206_CaseStudy.addOrderRequest(orList, order1);		
-		assertEquals("Test if that MenuList arraylist size is 1?", 1, orList.size());
+		assertEquals("Test if that orList arraylist size is 1?", 1, orList.size());
 		
 		//The item just added is as same as the first item of the list
-		assertSame("Test that Camcorder is added same as 1st item of the list?", food1, menuList.get(0));
+		assertSame("Test that OrderRequest is added same as 1st item of the list?", order1, orList.get(0));
 		
 		//Add another item. test The size of the list is 2?
 		C206_CaseStudy.addOrderRequest(orList, order2);
 		C206_CaseStudy.addOrderRequest(orList, order3);
-		assertEquals("Test that Camcorder arraylist size is 3?", 3, orList.size());
-		assertSame("Test that Camcorder is added same as 3rd item of the list?", order3, orList.get(2));
+		assertEquals("Test that OrderRequest arraylist size is 3?", 3, orList.size());
+		assertSame("Test that OrderRequest is added same as 3rd item of the list?", order3, orList.get(2));
 	}
 	@Test
 	public void testRetrieveAllOrderRequest() {
@@ -195,6 +196,33 @@ public class C206_CaseStudyTest {
 		testOutput += String.format("%-10d %-30s %-10d\n",2, "Noodles", 45);
 
 		assertEquals("Check that ViewAllCamcorderlist", testOutput, allOrderRequest);
+		
+	}
+	@Test
+	public void testDeleteOrderRequest() {
+		// Test if Item list is not null but empty, so that can add a new item
+		assertNotNull("Test if there is valid orList arraylist to add to", orList);
+		
+		//test if the list of Menu retrieved from the CaseStudy is empty
+		String allOrderRequest= C206_CaseStudy.retrieveAllOrderRequest(orList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllorList", testOutput, allOrderRequest);
+				
+		//Given an empty list, after adding 2 items, test if the size of the list is 2
+		C206_CaseStudy.addOrderRequest(orList, order1);
+		C206_CaseStudy.addOrderRequest(orList, order2);
+		assertEquals("Test if that OrderRequest arraylist size is 2?", 2, orList.size());
+		
+		//Given an list, after delete 1 items, test if the size of the list is 1
+				C206_CaseStudy.deleteOrderRequest(orList, order1);
+				assertEquals("Test if that OrderRequest arraylist size is 1?", 1, orList.size());
+		
+		//test if the expected output string same as the list of camcorder retrieved from the SourceCentre
+		allOrderRequest= C206_CaseStudy.retrieveAllOrderRequest(orList);
+
+		testOutput = String.format("%-10d %-10d %-30s %-10d %-10s\n", 2, 2, "Noodles", 45, null);
+	
+		assertEquals("Check that ViewAllMenulist", testOutput, allOrderRequest);
 		
 	}
 
