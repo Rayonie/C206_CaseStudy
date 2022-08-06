@@ -199,4 +199,17 @@ public class C206_CaseStudy {
 		}
 
 	}
+
+	/**
+	 * @param stallList
+	 * @param stall1
+	 */
+	public static void addStall(ArrayList<Stall> stallList, Stall stall) {
+		// TODO Auto-generated method stub
+		if(stall.getStallId() < 10) {
+			stallList.add(stall);
+		}else {
+			System.out.println("Maximum stalls in canteen is 10");
+		}
+	}
 }
