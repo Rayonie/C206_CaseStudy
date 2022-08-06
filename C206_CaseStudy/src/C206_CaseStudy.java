@@ -166,7 +166,7 @@ public class C206_CaseStudy {
 		int quantity = Helper.readInt("Enter quantity > ");
 		String date = Helper.readString("Enter date > ");
 
-		OrderRequest order = new OrderRequest(name, quantity, date);
+		OrderRequest order = new OrderRequest(id, name, quantity, date);
 		return order;
 
 	}
