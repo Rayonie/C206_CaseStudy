@@ -11,8 +11,8 @@ public class C206_CaseStudy {
 		menuList.add(new Menu("Mixed rice", 5));
 		menuList.add(new Menu("Bee hoon", 7));
 		
-		orList.add(new OrderRequest(1, "Cai Xin", 30));
-		orList.add(new OrderRequest(2, "Noodles", 45));
+		orList.add(new OrderRequest(1, "Cai Xin", 30, null));
+		orList.add(new OrderRequest(2, "Noodles", 45, null));
 		
 		int option = 0;
 
@@ -43,7 +43,10 @@ public class C206_CaseStudy {
 					System.out.println("Menu added");
 
 				} else if (itemType == 2) {
-
+					// Add Order Request
+					OrderRequest order1 = inputOrderRequest();
+					C206_CaseStudy.addOrderRequest(orList, order1);
+					System.out.println("Order Request added");
 
 				} else {
 					System.out.println("Invalid type");
@@ -66,6 +69,11 @@ public class C206_CaseStudy {
 					System.out.println("Menu Deleted");
 
 				} else if (itemType == 2) {
+					// Delete Order Request
+					int id = Helper.readInt("Enter Stall ID > ");
+					OrderRequest order1 = orList.get(id-1);
+					C206_CaseStudy.deleteOrderRequest(orList, order1);
+					System.out.println("Order Request Deleted");
 					
 
 				} else {
@@ -148,16 +156,21 @@ public static void deleteMenu(ArrayList<Menu> menuList, Menu food) {
 	}
 	
 	public static void addOrderRequest(ArrayList<OrderRequest> orList, OrderRequest order) {
-
+		if(order.getrequestid() <= 2) {
+			orList.add(order);
+		}else {
+			System.out.println("Unable to add. You have reach maximum amount of 2 orders per week.");
+		}
 	}
 
-	public static Menu inputOrderRequest() {
+	public static OrderRequest inputOrderRequest() {
 		int id = Helper.readInt("Enter stall ID > ");
 		String name = Helper.readString("Enter name of ingredient  > ");
+		int quantity = Helper.readInt("Enter quantity > ");
 		String date = Helper.readString("Enter date > ");
 
-		OrderRequest food= new OrderRequest(id, name, id, date);
-		return OrderRequest;
+		OrderRequest order = new OrderRequest(id, name, id, date);
+		return order;
 		
 	}
 	
@@ -179,4 +192,12 @@ public static void deleteMenu(ArrayList<Menu> menuList, Menu food) {
 	System.out.println(output);
 	
 }
+	public static void deleteOrderRequest(ArrayList<OrderRequest> orList, OrderRequest order) {
+		if(orList.isEmpty()) {
+			System.out.println("There is nothing to delete");
+		}else {
+		orList.remove(order);
+		}
+		
+	}
 }

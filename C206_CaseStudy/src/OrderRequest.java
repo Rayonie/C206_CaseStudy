@@ -64,8 +64,4 @@ public class OrderRequest {
 	}
 
 
-	public void setdate(String date) {
-		this.date = date;
-	}
-
 }
