@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class C206_CaseStudy {
 
@@ -8,9 +10,10 @@ public class C206_CaseStudy {
 		ArrayList<OrderRequest> orList = new ArrayList<OrderRequest>();
 		menuList.add(new Menu("Mixed rice", 5));
 		menuList.add(new Menu("Bee hoon", 7));
-
-		orList.add(new OrderRequest(1, "Cai Xin", 30, null));
-		orList.add(new OrderRequest(2, "Noodles", 45, null));
+		
+		Date date = new Date();
+		orList.add(new OrderRequest(1, "Cai Xin", 30, "date.getDate()"));
+		orList.add(new OrderRequest(2, "Noodles", 45, "dd-mm-yy"));
 
 		int option = 0;
 
@@ -176,8 +179,8 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < orList.size(); i++) {
 
-			output += String.format("%-20d %-40s %-10d\n", orList.get(i).getStallid(),
-					orList.get(i).getingredientname(), orList.get(i).getquantity());
+			output += String.format("%-15d %-20s %-20d %-10s\n", orList.get(i).getStallid(),
+					orList.get(i).getingredientname(), orList.get(i).getquantity(), orList.get(i).getdate());
 		}
 
 		return output;
@@ -185,7 +188,7 @@ public class C206_CaseStudy {
 
 	private static void viewAllOrderRequest(ArrayList<OrderRequest> orList) {
 		C206_CaseStudy.setHeader("Request Order LIST");
-		String output = String.format("%-20s %-40s %-10s\n", "STALL ID", "INGREDIENT NAME", "QUANTITY", "DATE");
+		String output = String.format("%-15s %-20s %-20s %-10s\n", "STALL ID", "INGREDIENT NAME", "QUANTITY", "DATE");
 		output += retrieveAllOrderRequest(orList);
 		System.out.println(output);
 
