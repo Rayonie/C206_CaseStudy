@@ -47,7 +47,7 @@ public class C206_CaseStudy {
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
-					// Add Stalla
+					// Add Stall
 					Stall stall1 = inputStall();
 					C206_CaseStudy.addStall(stallList, stall1);
 					System.out.println("Stall added");
