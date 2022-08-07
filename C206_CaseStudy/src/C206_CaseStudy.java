@@ -51,7 +51,7 @@ public class C206_CaseStudy {
 					Stall stall1 = inputStall();
 					C206_CaseStudy.addStall(stallList, stall1);
 					System.out.println("Stall added");
-					
+
 				} else if (itemType == 2) {
 					// Add Menu
 					Menu food1 = inputMenu();
@@ -60,7 +60,7 @@ public class C206_CaseStudy {
 
 				} else if (itemType == 3) {
 					// Add Order Request
-					OrderRequest order1 = inputOrderRequest();
+					OrderRequest order1 = inputOrderRequest(orList);
 					C206_CaseStudy.addOrderRequest(orList, order1);
 
 				} else {
@@ -93,10 +93,9 @@ public class C206_CaseStudy {
 
 				} else if (itemType == 3) {
 					// Delete Order Request
-//					int id = Helper.readInt("Enter Request ID > ");
-					int id = 1;
-					OrderRequest order1 = orList.get(id - 1);
-					C206_CaseStudy.deleteOrderRequest(orList, order1);
+					int id = Helper.readInt("Enter Request ID > ");
+					// OrderRequest order1 = orList.get(id - 1);
+					C206_CaseStudy.deleteOrderRequest(orList, id);
 					System.out.println("Order Request Deleted");
 
 				} else {
@@ -190,21 +189,41 @@ public class C206_CaseStudy {
 		for (int i = 0; i < orList.size(); i++) {
 			if (orList.get(i).getStallid() == order.getStallid()
 					&& orList.get(i).getrequestid() != order.getrequestid()) {
-					repeat = repeat + 1;
-				}
-			}
-			if (repeat >= 2) {
-				System.out.println("There is already more than 2 request order from the same store");
-			} else {
-				orList.add(order);
-				System.out.println("Order Request added");
+				repeat = repeat + 1;
 			}
 		}
+		if (repeat >= 2) {
+			System.out.println("There is already more than 2 request order from the same store");
+		} else {
+			orList.add(order);
+			System.out.println("Order Request added");
+		}
+	}
 
-	public static OrderRequest inputOrderRequest() {
-		int requestid = Helper.readInt("Enter request ID > ");
+	public static OrderRequest inputOrderRequest(ArrayList<OrderRequest> orList) {
+		int checkid = 0;
+		for (int i = 0; i < orList.size(); i++) {
+			checkid = orList.size() + 1;
+			while (checkid == orList.get(i).getrequestid()) {
+				checkid = checkid + 1;
+			}
+		}
+		int requestid = checkid;
 		int id = Helper.readInt("Enter stall ID > ");
-		String name = Helper.readString("Enter name of ingredient  > ");
+		
+		String name = "";
+		boolean checkName = true;
+		while (checkName != false) {
+			name = Helper.readString("Enter name of ingredient  > ");
+			try {
+				Integer.parseInt(name);
+				System.out.println("Input name must be string!!!");
+				checkName = true;
+			} catch (NumberFormatException e) {
+				checkName = false;
+			}
+		}
+		
 		int quantity = Helper.readInt("Enter quantity > ");
 
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
@@ -235,14 +254,20 @@ public class C206_CaseStudy {
 
 	}
 
-	public static void deleteOrderRequest(ArrayList<OrderRequest> orList, OrderRequest order) {
-		for (int i = 0; i < orList.size(); i++) {
+	public static void deleteOrderRequest(ArrayList<OrderRequest> orList, int order) {
+
 			if (!(orList.isEmpty())) {
-				orList.remove(order);
+
+				for (int i = 0;i < orList.size();i++) {
+					if(order == orList.get(i).getrequestid()) {
+
+						orList.remove(i);
+					}
+				}
+				
 			} else {
 				System.out.println("There is nothing to delete");
 			}
-		}
 	}
 
 	public static void addStall(ArrayList<Stall> stallList, Stall stall) {
@@ -282,4 +307,5 @@ public class C206_CaseStudy {
 			stallList.remove(stall);
 		}
 	}
+
 }
