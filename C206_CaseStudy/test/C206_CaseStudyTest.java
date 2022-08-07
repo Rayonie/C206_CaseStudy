@@ -35,9 +35,9 @@ public class C206_CaseStudyTest {
 		stall3 = new Stall(3, "Western");
 		
 		
-		order1 = new OrderRequest(1, 1, "Cai Xin", 30, null);
-		order2 = new OrderRequest(2, 2, "Noodles", 45, null);
-		order3 = new OrderRequest(3, 3, "Chicken", 25, null);
+		order1 = new OrderRequest(1, 1, "Cai Xin", 30, "05/08/22");
+		order2 = new OrderRequest(2, 2, "Noodles", 45, "06/08/22");
+		order3 = new OrderRequest(3, 3, "Chicken", 25, "07/08/22");
 		
 		stallList = new ArrayList<Stall>();
 		menuList= new ArrayList<Menu>();
@@ -198,8 +198,8 @@ public class C206_CaseStudyTest {
 		//test if the expected output string same as the list of camcorder retrieved from the SourceCentre
 		allOrderRequest= C206_CaseStudy.retrieveAllOrderRequest(orList);
 
-		testOutput = String.format("%-10d %-30s %-10d\n",1, "Cai Xin", 30);
-		testOutput += String.format("%-10d %-30s %-10d\n",2, "Noodles", 45);
+		testOutput = String.format("%-15d %-15d %-25s %-20d %-10s\n", 1, 1, "Cai Xin", 30, "05/08/22");
+		testOutput += String.format("%-15d %-15d %-25s %-20d %-10s\n", 2, 2, "Noodles", 45, "06/08/22");
 
 		assertEquals("Check that ViewAllCamcorderlist", testOutput, allOrderRequest);
 		
@@ -226,7 +226,7 @@ public class C206_CaseStudyTest {
 		//test if the expected output string same as the list of camcorder retrieved from the SourceCentre
 		allOrderRequest= C206_CaseStudy.retrieveAllOrderRequest(orList);
 
-		testOutput = String.format("%-10d %-10d %-30s %-10d %-10s\n", 2, 2, "Noodles", 45, null);
+		testOutput = String.format("%-15d %-15d %-25s %-20d %-10s\n", 2, 2, "Noodles", 45, "06/08/22");
 	
 		assertEquals("Check that ViewAllMenulist", testOutput, allOrderRequest);
 		
