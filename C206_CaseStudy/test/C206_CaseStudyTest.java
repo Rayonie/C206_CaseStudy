@@ -220,7 +220,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test if that OrderRequest arraylist size is 2?", 2, orList.size());
 		
 		//Given an list, after delete 1 items, test if the size of the list is 1
-				C206_CaseStudy.deleteOrderRequest(orList, order1);
+				C206_CaseStudy.deleteOrderRequest(orList, order1.getrequestid());
 				assertEquals("Test if that OrderRequest arraylist size is 1?", 1, orList.size());
 		
 		//test if the expected output string same as the list of camcorder retrieved from the SourceCentre

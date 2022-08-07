@@ -41,10 +41,6 @@ public class OrderRequest {
 		return requestid;
 	}
 
-	public void setrequestid(int requestid) {
-		this.requestid = requestid;
-	}
-
 	public String getingredientname() {
 		return ingredientname;
 	}
