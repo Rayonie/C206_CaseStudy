@@ -1,11 +1,3 @@
-import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 /*
  * I declare that this code was written by me.
  * I will not copy or allow others to copy my code.
@@ -26,9 +18,11 @@ public class OrderRequest {
 	private String ingredientname;
 	private int quantity;
 	private String date;
+	private int requestid;
 
-	public OrderRequest(int stallid, String ingredientname, int quantity, String date) {
+	public OrderRequest(int requestid, int stallid, String ingredientname, int quantity, String date) {
 		super();
+		this.requestid = requestid;
 		this.stallid = stallid;
 		this.ingredientname = ingredientname;
 		this.quantity = quantity;
