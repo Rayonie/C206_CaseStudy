@@ -166,11 +166,13 @@ public class C206_CaseStudy {
 
 	}
 
-	public static void addMenu(ArrayList<Menu> menuList, Menu food) {
+	public static boolean addMenu(ArrayList<Menu> menuList, Menu food) {
 		if (food.getFoodprice() <= 15 && food.getFoodprice() >= 3) {
 			menuList.add(food);
+			return true;
 		} else {
 			System.out.println("Price must be below 15 and above 3");
+			return false;
 		}
 
 	}
@@ -285,7 +287,12 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < stallList.size(); i++) {
 
+
+			output += String.format("%-10d %-10s %-30s \n", i + 1, stallList.get(i).getStallId(),
+					stallList.get(i).getStallName());
+
 			output += String.format("%-10s %-30s\n", stallList.get(i).getStallId(), stallList.get(i).getStallName());
+
 		}
 		return output;
 	}
