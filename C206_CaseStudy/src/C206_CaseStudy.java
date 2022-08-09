@@ -56,7 +56,7 @@ public class C206_CaseStudy {
 					// Add Menu
 					Menu food1 = inputMenu();
 					C206_CaseStudy.addMenu(menuList, food1);
-					System.out.println("Menu added");
+					
 
 				} else if (itemType == 3) {
 					// Add Order Request
@@ -169,6 +169,7 @@ public class C206_CaseStudy {
 	public static boolean addMenu(ArrayList<Menu> menuList, Menu food) {
 		if (food.getFoodprice() <= 15 && food.getFoodprice() >= 3) {
 			menuList.add(food);
+			System.out.println("Menu added");
 			return true;
 		} else {
 			System.out.println("Price must be below 15 and above 3");
