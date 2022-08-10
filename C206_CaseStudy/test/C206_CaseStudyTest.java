@@ -273,16 +273,15 @@ public class C206_CaseStudyTest {
 		// Item list is not null, so that can add a new item
 		assertNotNull("Test if there is valid orList arraylist to add to", promoList);
 		
+		
 		//Given an empty list, after adding 1 item, the size of the list is 1.
-		C206_CaseStudy.promotionMenuAdd(promoList);		
-		assertTrue("Test if that orList arraylist size is 1?", 1, orList.size());
+		C206_CaseStudy.promotionMenuAdd(promoList,promo1);			
+		assertFalse("Test if that orList arraylist size is 1?",promo1.isPromotionStatus());
 		
 		//The item just added is as same as the first item of the list
 		assertSame("Test that OrderRequest is added same as 1st item of the list?", order1, orList.get(0));
 		
 		//Add another item. test The size of the list is 2?
-		C206_CaseStudy.addOrderRequest(orList, order2);
-		C206_CaseStudy.addOrderRequest(orList, order3);
 		assertEquals("Test that OrderRequest arraylist size is 3?", 3, orList.size());
 		assertSame("Test that OrderRequest is added same as 3rd item of the list?", order3, orList.get(2));
 	}

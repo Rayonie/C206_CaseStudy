@@ -19,6 +19,10 @@ public class C206_CaseStudy {
 
 		orList.add(new OrderRequest(1, 1, "Cai Xin", 30, "05/08/22"));
 		orList.add(new OrderRequest(2, 2, "Noodles", 45, "06/08/22"));
+		
+		promoList.add(new Promotion(1, "Chicken Rice", 15, false, 15 * 0.8));
+		promoList.add(new Promotion(2, "Hokien Mee", 15, true, 15 * 0.8));
+		promoList.add(new Promotion(2, "Chicken Nugget", 15, false, 15 * 0.8));
 
 		for (int i = 0; i > menuList.size(); i++) {
 			String food = menuList.get(i).getFoodname();
@@ -167,22 +171,21 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	public static void promotionMenuAdd(ArrayList<Promotion> promoList) {
+	public static void promotionMenuAdd(ArrayList<Promotion> promoList, Promotion promotion) {
 		C206_CaseStudy.setHeader("Please select one of the following:");
-		String output = String.format("%-10s, %-10s %-30s %-10s\n","FOOD ID", "STALL ID", "FOOD NAME");
+		String output = String.format("%-10s, %-10s %-30s\n","FOOD ID", "STALL ID", "FOOD NAME");
 		output += retrievePromotionalMenuAdd(promoList);
 
 		int rep = 0;
-		int id = Helper.readInt("Enter Food id  > ");
 		for (int i = 0; i < promoList.size(); i++) {
-			if (promoList.get(i).getStallId() == id && i == id - 1) {
+			if (promoList.get(i).getStallId() == promotion.getStallId()) {
 				rep = rep + 1;
 				if (rep >= 2) {
-					promoList.get(i).setPromotionStatus(false);
+					promotion.setPromotionStatus(false);
 					System.out.println(
 							"Unable to perform task: There can only be one promotion for per stall, please remove the other if you would like to add a new one.");
 				} else {
-					promoList.get(i).setPromotionStatus(true);
+					promotion.setPromotionStatus(true);
 					System.out.println("Daily offer now active");
 				}
 			}
@@ -217,7 +220,7 @@ public class C206_CaseStudy {
 				System.out.println(
 						"Successfully Updated!");
 			} else {
-				promoList.get(i).setPromotionStatus( false);
+				promoList.get(i).setPromotionStatus(false);
 				System.out.println("Unable to find food id");
 			}
 		}
