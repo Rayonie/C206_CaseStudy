@@ -17,10 +17,13 @@ public class C206_CaseStudyTest {
 	private OrderRequest order1;
 	private OrderRequest order2;
 	private OrderRequest order3;
-	
+	private Promotion promo1;
+	private Promotion promo2;
+	private Promotion promo3;
 	private ArrayList<Stall> stallList;
 	private ArrayList<Menu> menuList;
 	private ArrayList<OrderRequest> orList;
+	private ArrayList<Promotion> promoList;
 
 	@Before
 	public void setUp() throws Exception {
@@ -39,9 +42,16 @@ public class C206_CaseStudyTest {
 		order2 = new OrderRequest(2, 2, "Noodles", 45, "06/08/22");
 		order3 = new OrderRequest(3, 3, "Chicken", 25, "07/08/22");
 		
+		promo1 = new Promotion(1, "Chicken Rice", 15, false, 15 * 0.8);
+		promo2 = new Promotion(2, "Hokien Mee", 15, true, 15 * 0.8);
+		promo3 = new Promotion(2, "Chicken Nugget", 15, false, 15 * 0.8);
+		
+		
 		stallList = new ArrayList<Stall>();
 		menuList= new ArrayList<Menu>();
 		orList= new ArrayList<OrderRequest>();
+		promoList= new ArrayList<Promotion>();
+		
 	}
 	
 	@Test
@@ -257,6 +267,24 @@ public class C206_CaseStudyTest {
 	
 		assertEquals("Check that ViewAllMenulist", testOutput, allOrderRequest);
 		
+	}
+	@Test
+	public void testAddPromotion() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid orList arraylist to add to", promoList);
+		
+		//Given an empty list, after adding 1 item, the size of the list is 1.
+		C206_CaseStudy.promotionMenuAdd(promoList);		
+		assertTrue("Test if that orList arraylist size is 1?", 1, orList.size());
+		
+		//The item just added is as same as the first item of the list
+		assertSame("Test that OrderRequest is added same as 1st item of the list?", order1, orList.get(0));
+		
+		//Add another item. test The size of the list is 2?
+		C206_CaseStudy.addOrderRequest(orList, order2);
+		C206_CaseStudy.addOrderRequest(orList, order3);
+		assertEquals("Test that OrderRequest arraylist size is 3?", 3, orList.size());
+		assertSame("Test that OrderRequest is added same as 3rd item of the list?", order3, orList.get(2));
 	}
 
 

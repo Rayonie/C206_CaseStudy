@@ -10,6 +10,7 @@ public class C206_CaseStudy {
 		ArrayList<Stall> stallList = new ArrayList<Stall>();
 		ArrayList<Menu> menuList = new ArrayList<Menu>();
 		ArrayList<OrderRequest> orList = new ArrayList<OrderRequest>();
+		ArrayList<Promotion> promoList = new ArrayList<Promotion>();
 		stallList.add(new Stall(1, "Rice"));
 		stallList.add(new Stall(2, "Noodles"));
 
@@ -18,6 +19,13 @@ public class C206_CaseStudy {
 
 		orList.add(new OrderRequest(1, 1, "Cai Xin", 30, "05/08/22"));
 		orList.add(new OrderRequest(2, 2, "Noodles", 45, "06/08/22"));
+
+		for (int i = 0; i > menuList.size(); i++) {
+			String food = menuList.get(i).getFoodname();
+			int price = menuList.get(i).getFoodprice();
+			int stallid = stallList.get(i).getStallId();
+			promoList.add(new Promotion(stallid, food, price, false, price * 0.8));
+		}
 
 		int option = 0;
 
@@ -53,7 +61,6 @@ public class C206_CaseStudy {
 					// Add Menu
 					Menu food1 = inputMenu();
 					C206_CaseStudy.addMenu(menuList, food1);
-					
 
 				} else if (itemType == 3) {
 					// Add Order Request
@@ -135,6 +142,102 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 
+	public static String retrieveAllPromotion(ArrayList<Promotion> promoList) {
+		String output = "";
+		String discount = " ";
+
+		for (int i = 0; i < promoList.size(); i++) {
+
+			output += String.format("%-10d %-30s %-10d %-10d\n",i + 1, promoList.get(i).getStallId(),
+					promoList.get(i).getFood(), promoList.get(i).getPrice(), discount);
+			if (promoList.get(i).isPromotionStatus() == false) {
+				discount = "currently not under promotion";
+			} else {
+				discount = Double.toString(promoList.get(i).getDiscountedPrice());
+			}
+		}
+		return output;
+	}
+
+	public static void viewAllPromotion(ArrayList<Promotion> promoList) {
+		C206_CaseStudy.setHeader("Menu LIST");
+		String output = String.format("%-10s %-10s %-30s %-10s\n","FOOD ID", "STALL ID", "FOOD NAME", "PRICE", "DISCOUNTED PRICE");
+		output += retrieveAllPromotion(promoList);
+		System.out.println(output);
+	}
+
+	public static void promotionMenuAdd(ArrayList<Promotion> promoList) {
+		C206_CaseStudy.setHeader("Please select one of the following:");
+		String output = String.format("%-10s, %-10s %-30s %-10s\n","FOOD ID", "STALL ID", "FOOD NAME");
+		output += retrievePromotionalMenuAdd(promoList);
+
+		int rep = 0;
+		int id = Helper.readInt("Enter Food id  > ");
+		for (int i = 0; i < promoList.size(); i++) {
+			if (promoList.get(i).getStallId() == id && i == id - 1) {
+				rep = rep + 1;
+				if (rep >= 2) {
+					promoList.setPromotionStatus(i, false);
+					System.out.println(
+							"Unable to perform task: There can only be one promotion for per stall, please remove the other if you would like to add a new one.");
+				} else {
+					promoList.setPromotionStatus(i, true);
+					System.out.println("Daily offer now active");
+				}
+			}
+		}
+
+	};
+
+	public static String retrievePromotionalMenuAdd(ArrayList<Promotion> promoList) {
+		String output = "";
+		
+
+		for (int i = 0; i < promoList.size(); i++) {
+
+			output += String.format("%-10d %-10d %-30s\n",i + 1, promoList.get(i).getFood();
+				
+		}
+		return output;
+	}
+
+	public static void promotionMenuDelete(ArrayList<Promotion> promoList) {
+		C206_CaseStudy.setHeader("Please select one of the following:");
+		String output = String.format("%-10s %-10s %-30s %-10s\n","FOOD ID", "STALL ID", "FOOD NAME");
+		output += retrievePromotionalMenuAdd(promoList);
+
+		
+		int id = Helper.readInt("Enter Food id  > ");
+		for (int i = 0; i < promoList.size(); i++) {
+			if (promoList.get(i).getStallId() == id && i == id - 1) {
+				
+
+				promoList.setPromotionStatus(i, true);
+				System.out.println(
+						"Successfully Updated!");
+			} else {
+				promoList.setPromotionStatus(i, false);
+				System.out.println("Unable to find food id");
+			}
+		}
+	}
+
+	};
+
+	public static String retrievePromotionalMenuDelete(ArrayList<Promotion> promoList) {
+		String output = "";
+		
+
+		for (int i = 0; i < promoList.size(); i++) {
+			if(promoList.get(i).isPromotionStatus() == true) {
+				output += String.format("%-10d %-10d %-30s\n",i + 1, promoList.get(i).getStallId(),promoList.get(i).getFood();
+			}else {
+				i = i + 1;
+			}
+		}
+		return output;
+	}
+
 	public static String retrieveAllMenu(ArrayList<Menu> menuList) {
 		String output = "";
 
@@ -209,7 +312,7 @@ public class C206_CaseStudy {
 		}
 		int requestid = checkid;
 		int id = Helper.readInt("Enter stall ID > ");
-		
+
 		String name = "";
 		boolean checkName = true;
 		while (checkName != false) {
@@ -222,7 +325,7 @@ public class C206_CaseStudy {
 				checkName = false;
 			}
 		}
-		
+
 		int quantity = Helper.readInt("Enter quantity > ");
 
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
@@ -255,18 +358,18 @@ public class C206_CaseStudy {
 
 	public static void deleteOrderRequest(ArrayList<OrderRequest> orList, int order) {
 
-			if (!(orList.isEmpty())) {
+		if (!(orList.isEmpty())) {
 
-				for (int i = 0;i < orList.size();i++) {
-					if(order == orList.get(i).getrequestid()) {
+			for (int i = 0; i < orList.size(); i++) {
+				if (order == orList.get(i).getrequestid()) {
 
-						orList.remove(i);
-					}
+					orList.remove(i);
 				}
-				
-			} else {
-				System.out.println("There is nothing to delete");
 			}
+
+		} else {
+			System.out.println("There is nothing to delete");
+		}
 	}
 
 	public static void addStall(ArrayList<Stall> stallList, Stall stall) {
@@ -283,7 +386,6 @@ public class C206_CaseStudy {
 		String output = "";
 
 		for (int i = 0; i < stallList.size(); i++) {
-
 
 			output += String.format("%-10d %-30s\n", stallList.get(i).getStallId(), stallList.get(i).getStallName());
 

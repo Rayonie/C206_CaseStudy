@@ -17,10 +17,12 @@
 public class Promotion {
 	private String food;
 	private boolean promotionStatus;
-	private float discountedPrice;
+	private double discountedPrice;
+	private int price;
+	private int stallId;
 	
 
-	public Promotion(String food, boolean promotionStatus, float discountedPrice) {
+	public Promotion(int stallid, String food, int price, boolean promotionStatus, double discountedPrice) {
 		super();
 		this.promotionStatus = promotionStatus;
 		this.discountedPrice = discountedPrice;
@@ -62,7 +64,7 @@ public class Promotion {
 	/**
 	 * @return the discountedPrice.
 	 */
-	public float getDiscountedPrice() {
+	public double getDiscountedPrice() {
 		return discountedPrice;
 	}
 
@@ -70,8 +72,40 @@ public class Promotion {
 	/**
 	 * @param discountedPrice the discountedPrice to set
 	 */
-	public void setDiscountedPrice(float discountedPrice) {
+	public void setDiscountedPrice(double discountedPrice) {
 		this.discountedPrice = discountedPrice;
+	}
+
+
+	/**
+	 * @return the price
+	 */
+	public int getPrice() {
+		return price;
+	}
+
+
+	/**
+	 * @param price the price to set
+	 */
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+
+	/**
+	 * @return the stallId
+	 */
+	public int getStallId() {
+		return stallId;
+	}
+
+
+	/**
+	 * @param stallId the stallId to set
+	 */
+	public void setStallId(int stallId) {
+		this.stallId = stallId;
 	}
 }
 
