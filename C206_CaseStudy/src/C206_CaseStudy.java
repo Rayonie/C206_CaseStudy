@@ -40,6 +40,7 @@ public class C206_CaseStudy {
 				C206_CaseStudy.viewAllStall(stallList);
 				C206_CaseStudy.viewAllMenu(menuList);
 				C206_CaseStudy.viewAllOrderRequest(orList);
+				C206_CaseStudy.viewAllPromotion(promoList);
 
 			} else if (option == 2) {
 				// Add a new item
@@ -177,11 +178,11 @@ public class C206_CaseStudy {
 			if (promoList.get(i).getStallId() == id && i == id - 1) {
 				rep = rep + 1;
 				if (rep >= 2) {
-					promoList.setPromotionStatus(i, false);
+					promoList.get(i).setPromotionStatus(false);
 					System.out.println(
 							"Unable to perform task: There can only be one promotion for per stall, please remove the other if you would like to add a new one.");
 				} else {
-					promoList.setPromotionStatus(i, true);
+					promoList.get(i).setPromotionStatus(true);
 					System.out.println("Daily offer now active");
 				}
 			}
@@ -195,7 +196,7 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < promoList.size(); i++) {
 
-			output += String.format("%-10d %-10d %-30s\n",i + 1, promoList.get(i).getFood();
+			output += String.format("%-10d %-10d %-30s\n",i + 1, promoList.get(i).getFood());
 				
 		}
 		return output;
@@ -212,16 +213,14 @@ public class C206_CaseStudy {
 			if (promoList.get(i).getStallId() == id && i == id - 1) {
 				
 
-				promoList.setPromotionStatus(i, true);
+				promoList.get(i).setPromotionStatus(true);
 				System.out.println(
 						"Successfully Updated!");
 			} else {
-				promoList.setPromotionStatus(i, false);
+				promoList.get(i).setPromotionStatus( false);
 				System.out.println("Unable to find food id");
 			}
 		}
-	}
-
 	};
 
 	public static String retrievePromotionalMenuDelete(ArrayList<Promotion> promoList) {
@@ -230,7 +229,7 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < promoList.size(); i++) {
 			if(promoList.get(i).isPromotionStatus() == true) {
-				output += String.format("%-10d %-10d %-30s\n",i + 1, promoList.get(i).getStallId(),promoList.get(i).getFood();
+				output += String.format("%-10d %-10d %-30s\n",i + 1, promoList.get(i).getStallId(),promoList.get(i).getFood());
 			}else {
 				i = i + 1;
 			}
