@@ -16,11 +16,8 @@ public class C206_CaseStudy {
 		menuList.add(new Menu("Mixed rice", 5));
 		menuList.add(new Menu("Bee hoon", 7));
 
-		DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
-		Calendar obj = Calendar.getInstance();
-		String str = formatter.format(obj.getTime());
-		orList.add(new OrderRequest(1, 1, "Cai Xin", 30, str));
-		orList.add(new OrderRequest(2, 2, "Noodles", 45, str));
+		orList.add(new OrderRequest(1, 1, "Cai Xin", 30, "05/08/22"));
+		orList.add(new OrderRequest(2, 2, "Noodles", 45, "06/08/22"));
 
 		int option = 0;
 
@@ -196,7 +193,7 @@ public class C206_CaseStudy {
 			}
 		}
 		if (repeat >= 2) {
-			System.out.println("There is already more than 2 request order from the same store");
+			System.out.println("Failed to add. There is already more than 2 request order from the same store");
 		} else {
 			orList.add(order);
 			System.out.println("Order Request added");
