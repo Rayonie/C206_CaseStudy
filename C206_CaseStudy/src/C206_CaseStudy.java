@@ -104,7 +104,6 @@ public class C206_CaseStudy {
 					// Delete Order Request
 					int id = Helper.readInt("Enter Request ID > ");
 					C206_CaseStudy.deleteOrderRequest(orList, id);
-					System.out.println("Order Request Deleted");
 
 				} else {
 					System.out.println("Invalid type");
@@ -362,18 +361,25 @@ public class C206_CaseStudy {
 
 	public static void deleteOrderRequest(ArrayList<OrderRequest> orList, int order) {
 
+		String msg = "";
 		if (!(orList.isEmpty())) {
 
 			for (int i = 0; i < orList.size(); i++) {
 				if (order == orList.get(i).getrequestid()) {
 
 					orList.remove(i);
+
+					msg = "Order " + order + " Request Deleted";
+
+				} else {
+					msg = "Order " + order + " does not exist";
 				}
 			}
 
 		} else {
-			System.out.println("There is nothing to delete");
+			msg = "There is nothing to delete";
 		}
+		System.out.println(msg);
 	}
 
 	public static void addStall(ArrayList<Stall> stallList, Stall stall) {
