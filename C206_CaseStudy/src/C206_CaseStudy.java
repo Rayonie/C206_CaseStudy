@@ -91,7 +91,6 @@ public class C206_CaseStudy {
 				} else if (itemType == 3) {
 					// Delete Order Request
 					int id = Helper.readInt("Enter Request ID > ");
-					// OrderRequest order1 = orList.get(id - 1);
 					C206_CaseStudy.deleteOrderRequest(orList, id);
 					System.out.println("Order Request Deleted");
 
