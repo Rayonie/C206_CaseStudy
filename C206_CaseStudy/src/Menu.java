@@ -13,13 +13,13 @@
  * @author Ben
  *
  */
-public class Menu {
+public class Menu extends Stall{
 	private String foodname;
 	private int foodprice;
 	
 
-	public Menu( String foodname, int foodprice) {
-		super();
+	public Menu( int stallId,String stallName,String foodname, int foodprice) {
+		super(stallId,stallName);
 		this.foodname = foodname;
 		this.foodprice = foodprice;
 	}

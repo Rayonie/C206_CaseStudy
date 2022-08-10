@@ -14,8 +14,8 @@ public class C206_CaseStudy {
 		stallList.add(new Stall(1, "Rice"));
 		stallList.add(new Stall(2, "Noodles"));
 
-		menuList.add(new Menu("Mixed rice", 5));
-		menuList.add(new Menu("Bee hoon", 7));
+		menuList.add(new Menu(1,"Rice","Mixed rice", 5));
+		menuList.add(new Menu(2,"Noodles","Bee hoon", 7));
 
 		orList.add(new OrderRequest(1, 1, "Cai Xin", 30, "05/08/22"));
 		orList.add(new OrderRequest(2, 2, "Noodles", 45, "06/08/22"));
@@ -259,10 +259,12 @@ public class C206_CaseStudy {
 	}
 
 	public static Menu inputMenu() {
+		int stallId = Helper.readInt("Enter Stall Id > ");
+		String stallName = Helper.readString("Enter Stall Name > ");
 		String name = Helper.readString("Enter Food name > ");
 		int price = Helper.readInt("Enter Price  > ");
 
-		Menu food = new Menu(name, price);
+		Menu food = new Menu(stallId,stallName,name, price);
 		return food;
 
 	}

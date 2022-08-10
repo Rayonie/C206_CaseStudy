@@ -28,13 +28,13 @@ public class C206_CaseStudyTest {
 	@Before
 	public void setUp() throws Exception {
 
-		food1 = new Menu("Chicken Rice", 15);
-		food2 = new Menu("Hokkien Mee", 7);
-		food3 = new Menu("Chicken Nugget", 3);
-		food4 = new Menu("Chicken Nugget", 17);
+		food1 = new Menu(1,"Rice","Chicken Rice", 15);
+		food2 = new Menu(2,"Rice","Hokkien Mee", 7);
+		food3 = new Menu(3, "Western","Chicken Nugget", 3);
+		food4 = new Menu(3, "Western","Chicken Nugget", 17);
 
 		stall1 = new Stall(1, "Rice");
-		stall2 = new Stall(2, "Noodles");
+		stall2 = new Stall(2, "Rice");
 		stall3 = new Stall(3, "Western");
 		
 		
