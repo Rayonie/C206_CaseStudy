@@ -285,10 +285,7 @@ public class C206_CaseStudy {
 		for (int i = 0; i < stallList.size(); i++) {
 
 
-			output += String.format("%-10d %-10s %-30s \n", i + 1, stallList.get(i).getStallId(),
-					stallList.get(i).getStallName());
-
-			output += String.format("%-10s %-30s\n", stallList.get(i).getStallId(), stallList.get(i).getStallName());
+			output += String.format("%-10d %-30s\n", stallList.get(i).getStallId(), stallList.get(i).getStallName());
 
 		}
 		return output;
