@@ -73,6 +73,7 @@ public class Promotion {
 	public void setDiscountedPrice(float discountedPrice) {
 		this.discountedPrice = discountedPrice;
 	}
+}
 
 	
 	
