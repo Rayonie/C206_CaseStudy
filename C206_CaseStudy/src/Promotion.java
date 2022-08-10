@@ -60,7 +60,7 @@ public class Promotion {
 
 
 	/**
-	 * @return the discountedPrice
+	 * @return the discountedPrice.
 	 */
 	public float getDiscountedPrice() {
 		return discountedPrice;
