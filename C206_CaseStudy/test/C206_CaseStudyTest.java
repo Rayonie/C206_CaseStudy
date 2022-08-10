@@ -34,7 +34,7 @@ public class C206_CaseStudyTest {
 		food4 = new Menu(3, "Western","Chicken Nugget", 17);
 
 		stall1 = new Stall(1, "Rice");
-		stall2 = new Stall(2, "Rice");
+		stall2 = new Stall(2, "Noodles");
 		stall3 = new Stall(3, "Western");
 		
 		
