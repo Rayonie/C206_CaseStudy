@@ -87,6 +87,33 @@ public class C206_CaseStudyTest {
 		
 	}
 	@Test
+	public void testDeleteStall() {
+		// Test if Item list is not null but empty, so that can add a new item
+		assertNotNull("Test if there is valid StallList arraylist to add to", stallList);
+		
+		//test if the list of Menu retrieved from the CaseStudy is empty
+		String allStall= C206_CaseStudy.retrieveAllStall(stallList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllStallList", testOutput, allStall);
+				
+		//Given an empty list, after adding 2 items, test if the size of the list is 2
+		C206_CaseStudy.addStall(stallList, stall1);
+		C206_CaseStudy.addStall(stallList, stall2);
+		assertEquals("Test if that Stall arraylist size is 2?", 2, stallList.size());
+		
+		//Given an list, after delete 1 items, test if the size of the list is 1
+				C206_CaseStudy.deleteStall(stallList, stall1);
+				assertEquals("Test if that Stall arraylist size is 1?", 1, stallList.size());
+		
+		//test if the expected output string same as the list of Menu retrieved from the CaseStudy
+		allStall= C206_CaseStudy.retrieveAllStall(stallList);
+
+		testOutput = String.format("%-10d %-30s\n",2, "Noodles");
+	
+		assertEquals("Check that ViewAllStalllist", testOutput, allStall);
+		
+	}
+	@Test
 	public void testAddMenu() {
 		// Item list is not null, so that can add a new item/
 		assertNotNull("Test if there is valid MenuList arraylist to add to", menuList);
